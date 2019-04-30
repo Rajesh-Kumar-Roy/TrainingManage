@@ -1,0 +1,97 @@
+﻿@model TrainingManagementProjectTry.Models.StudentViewModel.StudentCreateViewModel
+@{
+    ViewData["Title"] = "Entry";
+}
+
+<h1>Entry</h1>
+<div class="container">
+    <form asp-action="Entry">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Department</label>
+                    <select asp-for="DepartmentId" class="form-control">
+                        <option>Select...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Name" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="RegNo"></label>
+                    <input asp-for="RegNo" class="form-control" placeholder="Reg No" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNo"></label>
+                    <input asp-for="PhoneNo" class="form-control" placeholder="Phone No" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address"></label>
+                    <input asp-for="Address" class="form-control" placeholder="Address" />
+                </div>
+            </div>
+
+        </div>
+        <div class="offset-3 col-md-2">
+            <button type="submit" class="form-control btn btn-success">Save</button>
+        </div>
+    </form>
+
+
+</div>
+<hr />
+<div class="container">
+    <div id="div_studentList">
+        <table class="table table-striped table-hover table-borderless">
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Reg NO</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th>Phone NO</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in @Model.studentcollection)
+                {
+                    <tr>
+                        <td>@student.Name</td>
+                        <td>@student.RegNo</td>
+                        <td>@student.Department.Name</td>
+                        <td>@student.Email</td>
+                        <td>@student.PhoneNo</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/Project/Student-Entry.js"></script>
+  @*  $('#DepartmentId').change(function() {
+        var departmentDD = $('#DepartmentId');
+        var departmentId = departmentDD.val();
+        var jsonData = { departmentId:departmentId }
+
+        $.ajax({
+            url: "/student/GetByDepartmentPartial",
+            data: jsonData,
+            success: function(response) {
+                $('#div_studentList').html(response);
+            }
+    });
+    });*@
+ 
+ 
